@@ -18,7 +18,7 @@ const App:React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <div className="circle">
+      <div className="main">
         <CircleOne toogleForm={toogleForm} />
         <Line />
         <CircleTwo />
