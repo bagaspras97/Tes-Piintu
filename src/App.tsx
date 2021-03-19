@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState} from 'react';
+import CircleOne from './components/Circle/CircleOne';
+import CircleThree from './components/Circle/CircleThree';
+import CircleTwo from './components/Circle/CircleTwo';
+import FormData from './components/FormData';
+import Header from './components/Header';
+import Line from './components/Line';
 
-function App() {
+
+const App:React.FC = () => {
+  const [name, setName] = useState<string> ('');
+  const [email, setEmail] = useState<string> ('')
+  const [showData, setShowData] = useState<boolean>(false);
+
+  const toogleForm = () => {
+    setShowData(!showData);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="circle">
+        <CircleOne toogleForm={toogleForm} />
+        <Line />
+        <CircleTwo />
+        <Line />
+        <CircleThree name={name} email={email} />
+      </div>
+      <FormData name={name} setName={setName}  email={email} setEmail={setEmail} showData={showData} />
     </div>
   );
 }
 
 export default App;
+
